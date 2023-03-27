@@ -1,0 +1,362 @@
+#include <stdio.h>
+#include<stdlib.h>
+
+
+struct Queue
+{
+	int* queue;
+	int capacity;
+	int front;
+	int rear;
+};
+void Push(Queue& q, int data)
+{
+	if ((q.rear + 1) % q.capacity == q.front)
+		return;
+
+	q.queue[q.rear = (q.rear + 1) % q.capacity] = data;
+}
+int Pop(Queue& q)
+{
+	if (q.front == q.rear)
+		return 0xfffffff;
+
+	return q.queue[q.front = (q.front + 1) % q.capacity];
+}
+void InitQueue(Queue& q, int cap)
+{
+	q.queue = new int[cap];
+	q.capacity = cap;
+	q.front = q.rear = 0;
+}
+void UninitQueue(Queue& q)
+{
+	delete[] q.queue;
+}
+int main()
+{
+
+	Queue q;
+
+	InitQueue(q, 100);
+
+	Push(q, 10);
+	Push(q, 20);
+	Push(q, 30);
+
+	printf("%d\n", Pop(q));
+	printf("%d\n", Pop(q));
+	printf("%d\n", Pop(q));
+
+	UninitQueue(q);
+}
+
+
+
+#include <stdio.h>
+#include<stdlib.h>
+
+
+struct Queue
+{
+	int* queue;
+	int capacity;
+	int front;
+	int rear;
+};
+void Push(Queue* q, int data)
+{
+	if ((q->rear + 1) % q->capacity == q->front)
+		return;
+
+	q->queue[q->rear = (q->rear + 1) % q->capacity] = data;
+}
+int Pop(Queue* q)
+{
+	if (q->front == q->rear)
+		return 0xfffffff;
+
+	return q->queue[q->front = (q->front + 1) % q->capacity];
+}
+void InitQueue(Queue* q, int cap)
+{
+	q->queue = new int[cap];
+	q->capacity = cap;
+	q->front = q->rear = 0;
+}
+void UninitQueue(Queue* q)
+{
+	delete[] q->queue;
+}
+int main()
+{
+
+	Queue q ;
+
+	InitQueue(&q, 100);
+
+	Push(&q, 10);
+	Push(&q, 20);
+	Push(&q, 30);
+
+	printf("%d\n", Pop(&q));
+	printf("%d\n", Pop(&q));
+	printf("%d\n", Pop(&q));
+
+	UninitQueue(&q);
+}
+
+
+
+
+#include <stdio.h>
+#include<stdlib.h>
+
+
+struct Queue
+{
+	int queue[5];
+	int front;
+	int rear;
+};
+void Push(Queue* q, int data)
+{
+	if ((q->rear + 1) % 5 == q->front)
+		return;
+
+	q->queue[q->rear = (q->rear + 1) % 5] = data;
+}
+int Pop(Queue* q)
+{
+	if (q->front == q->rear)
+		return 0xfffffff;
+
+	return q->queue[q->front = (q->front + 1) % 5];
+}
+int main()
+{
+
+	Queue q = { 0 };
+	Push(&q, 10);
+	Push(&q, 20);
+	Push(&q, 30);
+	Push(&q, 40);
+	Push(&q, 50);
+
+
+	printf("%d\n", Pop(&q));
+	printf("%d\n", Pop(&q));
+	printf("%d\n", Pop(&q));
+	printf("%d\n", Pop(&q));
+	printf("%d\n", Pop(&q));
+}
+
+
+
+#include <stdio.h>
+#include<stdlib.h>
+
+
+struct Queue
+{
+	int queue[100];
+	int front;
+	int rear;
+};
+void Push(Queue* q, int data)
+{
+	if ((q->rear + 1)%100 == q->front)
+		return;
+
+	q->queue[q->rear=(q-> rear+1)%100] = data;
+}
+int Pop(Queue* q)
+{
+	if (q->front == q->rear)
+		return 0xfffffff;
+
+	return q->queue[q->front = (q->front+1)%100];
+}
+int main()
+{
+
+	Queue q = { 0 };
+	Push(&q, 10);
+	Push(&q, 20);
+	Push(&q, 30);
+
+
+	printf("%d\n", Pop(&q));
+	printf("%d\n", Pop(&q));
+	printf("%d\n", Pop(&q));
+}
+
+
+
+#include <stdio.h>
+#include<stdlib.h>
+
+
+struct Queue
+{
+	int queue[100];
+	int front;
+	int rear;
+};
+void Push(Queue* q, int data)
+{
+	q->queue[q->rear++] = data;
+}
+int Pop(Queue* q)
+{
+	return q->queue[q->front++];
+}
+int main()
+{
+
+	Queue q = { 0 };
+	Push(&q, 10);
+	Push(&q, 20);
+	Push(&q, 30);
+
+
+	printf("%d\n", Pop(&q));
+	printf("%d\n", Pop(&q));
+	printf("%d\n", Pop(&q));
+}
+
+
+
+#include <stdio.h>
+#include<stdlib.h>
+
+
+struct Queue
+{
+	int queue[100];
+	int front;
+	int rear;
+};
+void Push(Queue* q, int data)
+{
+	q->queue[q->rear++] = data;
+}
+int Pop(Queue* q)
+{
+	return q->queue[q->front++];
+}
+int main()
+{
+	
+	Queue q1 = { 0 };
+	Push(&q1, 100);
+	Push(&q1, 200);
+	Push(&q1, 300);
+
+	Queue q2 = { 0 };
+	Push(&q2, 22);
+	Push(&q2, 55);
+	printf("q2 : %d\n", Pop(&q2));
+	printf("q2 : %d\n", Pop(&q2));
+
+	printf("%d\n", Pop(&q1));
+	printf("%d\n", Pop(&q1));
+	printf("%d\n", Pop(&q1));
+}
+
+
+
+#include <stdio.h>
+#include<stdlib.h>
+
+
+
+void Push(int* queue, int* front, int* rear, int data)
+{
+	queue[(*rear)++] = data;
+}
+int Pop(int* queue, int* front, int* rear)
+{
+	return queue[(*front)++];
+}
+int main()
+{
+	int queue[100];
+	int front = 0;
+	int rear = 0;
+
+	Push(queue, &front, &rear, 100);
+	Push(queue, &front, &rear, 200);
+	Push(queue, &front, &rear, 300);
+
+	int q2[10];
+	int f2 = 0,r2 = 0;
+	Push(q2, &f2, &r2, 22);
+	Push(q2, &f2, &r2, 55);
+	printf("q2 : %d\n", Pop(q2, &f2, &r2));
+	printf("q2 : %d\n", Pop(q2, &f2, &r2));
+
+	printf("%d\n", Pop(queue, &front, &rear));
+	printf("%d\n", Pop(queue, &front, &rear));
+	printf("%d\n", Pop(queue, &front, &rear));
+}
+
+
+
+
+#include <stdio.h>
+#include<stdlib.h>
+
+
+
+void Push(int* queue,int* front,int*rear,int data)
+{
+	queue[(*rear)++] = data;
+}
+int Pop(int* queue, int* front, int* rear)
+{
+	return queue[(*front)++];
+}
+int main()
+{
+	int queue[100];
+	int front = 0;
+	int rear = 0;
+
+	Push(queue,&front,&rear,100);
+	Push(queue, &front, &rear, 200);
+	Push(queue, &front, &rear, 300);
+
+	printf("%d\n", Pop(queue, &front, &rear));
+	printf("%d\n", Pop(queue, &front, &rear));
+	printf("%d\n", Pop(queue, &front, &rear));
+}
+
+
+
+
+#include <stdio.h>
+#include<stdlib.h>
+//Queue
+
+int queue[100];
+int front = 0; //꺼내지는 위치
+int rear = 0; //저장되는 위치
+void Push(int data)
+{
+	queue[rear++] = data;
+}
+int Pop()
+{
+	return queue[front++];
+}
+int main()
+{
+	Push(100);
+	Push(200);
+	Push(300);
+
+	printf("%d\n", Pop());
+	printf("%d\n", Pop());
+	printf("%d\n", Pop());
+}
