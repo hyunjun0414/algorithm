@@ -1,0 +1,1119 @@
+#include <stdio.h>
+#include<list>
+using namespace std;
+template <typename T>
+class List
+{
+public:
+	struct Node
+	{
+		T data;
+		Node* prev;
+		Node* next;
+	};
+	struct Iterator
+	{
+		Node* ptr;
+		Iterator(Node* p = NULL):ptr(p){}
+		bool operator!=(Iterator arg) { return ptr !=arg.ptr; }
+		void operator++() { ptr = ptr->next; }
+		T operator*() { return ptr->data;}
+	};
+private:
+	Node* head;
+	Node* tail;
+	Node* Allocnode(T data)
+	{
+		Node* n = new Node;
+		n->data = data;
+		n->next = n->prev = NULL;
+		return n;
+	}
+public:
+	void AddNextList(T data)
+	{
+		Node* n = Allocnode(data);
+		Node* ptail = tail->prev;
+		ptail->next = n;
+		n->prev = ptail;
+		n->next = tail;
+		tail->prev = n;
+	}
+	void AddPrevList(T data)
+	{
+		Node* n = Allocnode(data);
+		Node* nhead = head->next;
+		head->next = n;
+		n->prev = head;
+		n->next = nhead;
+		nhead->prev = n;
+	}
+	List()
+	{
+		head = Allocnode(T());
+		tail = Allocnode(T());
+		head->next = tail;
+		tail->prev = head;
+	}
+	~List()
+	{
+		for (Node* p = head; p;)
+		{
+			Node* np = p->next;
+			delete p;
+			p = np;
+		}
+		head = NULL;
+		tail = NULL;
+	}
+	void PrintNextList()
+	{
+		for (Node* p = head->next; p != tail; p = p->next)
+			printf("%g", p->data);
+		printf("\n");
+	}
+	void EraseList(Iterator args)
+	{
+		Node* p = args.ptr;
+		Node* pp = p->prev;
+		Node* np = p->next;
+
+		pp->next = np;
+		np->prev = pp;
+
+		delete p;
+	}
+	void InsertList(Node* p, T data)
+	{
+		Node* n = Allocnode(data);
+		Node* pp = p->prev;
+		pp->next = n;
+		n->prev = pp;
+		n->next = p;
+		p->prev = n;
+	}
+	Iterator Begin() { return Iterator(head->next); }
+	Iterator End() { return Iterator(tail); }
+	//모든 원소를 순회하며 참조하는 인터페이스
+	Node* GetHead()
+	{
+		return head->next;
+	}
+	T HasNext(Node* p)
+	{
+		return tail != p;
+	}
+	Node* Next(Node* p)
+	{
+		return p->next;
+	}
+	T GetData(Node* p)
+	{
+		return p->data;
+	}
+};
+void main()
+{
+	List<double> lt;
+
+
+
+	lt.AddNextList(10.1);
+	lt.AddNextList(20.2);
+	lt.AddNextList(30.3);
+	lt.AddNextList(40.4);
+	lt.AddNextList(50.5);
+	for (List<double>::Iterator iter = lt.Begin(); iter != lt.End(); ++iter)
+		printf("%g ", *iter);
+	printf("\n");
+	//lt.PrintNextList();
+}
+
+
+
+
+
+//#include <stdio.h>
+//#include<list>
+//using namespace std;
+//template <typename T>
+//class List
+//{
+//public:
+//	struct Node
+//	{
+//		T data;
+//		Node* prev;
+//		Node* next;
+//	};
+//	//private:
+//	Node* head;
+//	Node* tail;
+//	Node* Allocnode(T data)
+//	{
+//		Node* n = new Node;
+//		n->data = data;
+//		n->next = n->prev = NULL;
+//		return n;
+//	}
+//public:
+//	void AddNextList(T data)
+//	{
+//		Node* n = Allocnode(data);
+//		Node* ptail = tail->prev;
+//		ptail->next = n;
+//		n->prev = ptail;
+//		n->next = tail;
+//		tail->prev = n;
+//	}
+//	void AddPrevList(T data)
+//	{
+//		Node* n = Allocnode(data);
+//		Node* nhead = head->next;
+//		head->next = n;
+//		n->prev = head;
+//		n->next = nhead;
+//		nhead->prev = n;
+//	}
+//	List()
+//	{
+//		head = Allocnode(T());
+//		tail = Allocnode(T());
+//		head->next = tail;
+//		tail->prev = head;
+//	}
+//	~List()
+//	{
+//		for (Node* p = head; p;)
+//		{
+//			Node* np = p->next;
+//			delete p;
+//			p = np;
+//		}
+//		head = NULL;
+//		tail = NULL;
+//	}
+//	void PrintNextList()
+//	{
+//		for (Node* p = head->next; p != tail; p = p->next)
+//			printf("%g", p->data);
+//		printf("\n");
+//	}
+//	void EraseList(Node* p)
+//	{
+//		Node* pp = p->prev;
+//		Node* np = p->next;
+//
+//		pp->next = np;
+//		np->prev = pp;
+//
+//		delete p;
+//	}
+//	void InsertList(Node* p, T data)
+//	{
+//		Node* n = Allocnode(data);
+//		Node* pp = p->prev;
+//		pp->next = n;
+//		n->prev = pp;
+//		n->next = p;
+//		p->prev = n;
+//	}
+//	//모든 원소를 순회하며 참조하는 인터페이스
+//	Node* GetHead()
+//	{
+//		return head->next;
+//	}
+//	T HasNext(Node* p)
+//	{
+//		return tail != p;
+//	}
+//	Node* Next(Node* p)
+//	{
+//		return p->next;
+//	}
+//	T GetData(Node* p)
+//	{
+//		return p->data;
+//	}
+//};
+//void main()
+//{
+//	list<double> lt;
+//
+//
+//
+//	lt.push_back(10.1);
+//	lt.push_back(20.2);
+//	lt.push_back(30.3);
+//	lt.push_back(40.4);
+//	lt.push_back(50.5);
+//	for (list<double>::iterator iter = lt.begin(); iter != lt.end(); ++iter)
+//		if (*iter == 30.3)
+//		{
+//			lt.erase(iter);
+//			break;
+//		}
+//	//lt.PrintNextList();
+//}
+
+
+
+
+
+//#include <stdio.h>
+//
+//
+//template <typename T>
+//class List
+//{	
+//public:
+//	struct Node
+//	{
+//		T data;
+//		Node* prev;
+//		Node* next;
+//	};
+//	//private:
+//	Node* head;
+//	Node* tail;
+//	Node* Allocnode(T data)
+//	{
+//		Node* n = new Node;
+//		n->data = data;
+//		n->next = n->prev = NULL;
+//		return n;
+//	}
+//public:
+//	void AddNextList(T data)
+//	{
+//		Node* n = Allocnode(data);
+//		Node* ptail = tail->prev;
+//		ptail->next = n;
+//		n->prev = ptail;
+//		n->next = tail;
+//		tail->prev = n;
+//	}
+//	void AddPrevList(T data)
+//	{
+//		Node* n = Allocnode(data);
+//		Node* nhead = head->next;
+//		head->next = n;
+//		n->prev = head;
+//		n->next = nhead;
+//		nhead->prev = n;
+//	}
+//	List()
+//	{
+//		head = Allocnode(T());
+//		tail = Allocnode(T());
+//		head->next = tail;
+//		tail->prev = head;
+//	}
+//	~List()
+//	{
+//		for (Node* p = head; p;)
+//		{
+//			Node* np = p->next;
+//			delete p;
+//			p = np;
+//		}
+//		head = NULL;
+//		tail = NULL;
+//	}
+//	void PrintNextList()
+//	{
+//		for (Node* p = head->next; p != tail; p = p->next)
+//			printf("%g", p->data);
+//		printf("\n");
+//	}
+//	void EraseList(Node* p)
+//	{
+//		Node* pp = p->prev;
+//		Node* np = p->next;
+//
+//		pp->next = np;
+//		np->prev = pp;
+//
+//		delete p;
+//	}
+//	void InsertList(Node* p, T data)
+//	{
+//		Node* n = Allocnode(data);
+//		Node* pp = p->prev;
+//		pp->next = n;
+//		n->prev = pp;
+//		n->next = p;
+//		p->prev = n;
+//	}
+//	//모든 원소를 순회하며 참조하는 인터페이스
+//	Node* GetHead()
+//	{
+//		return head->next;
+//	}
+//	T HasNext(Node* p)
+//	{
+//		return tail != p;
+//	}
+//	Node* Next(Node* p)
+//	{
+//		return p->next;
+//	}
+//	T GetData(Node* p)
+//	{
+//		return p->data;
+//	}
+//};
+//void main()
+//{
+//	List<double> lt;
+//
+//
+//
+//	lt.AddNextList(10.1);
+//	lt.AddNextList(20.2);
+//	lt.AddNextList(30.3);
+//	lt.AddNextList(40.4);
+//	lt.AddNextList(50.5);
+//	for (List<double>::Node* p = lt.GetHead(); lt.HasNext(p); p = lt.Next(p))
+//		if (lt.GetData(p) == 30.3)
+//		{
+//			lt.EraseList(p);
+//			break;
+//		}
+//	lt.PrintNextList();
+//}
+
+
+
+
+//#include <stdio.h>
+//
+//struct Node
+//{
+//	int data;
+//	Node* prev;
+//	Node* next;
+//};
+//class List
+//{	//private:
+//	Node* head;
+//	Node* tail;
+//	Node* Allocnode(int data)
+//	{
+//		Node* n = new Node;
+//		n->data = data;
+//		n->next = n->prev = NULL;
+//		return n;
+//	}
+//public:
+//
+//
+//	void AddNextList(int data)
+//	{
+//		Node* n = Allocnode(data);
+//		Node* ptail = tail->prev;
+//		ptail->next = n;
+//		n->prev = ptail;
+//		n->next = tail;
+//		tail->prev = n;
+//	}
+//	void AddPrevList(int data)
+//	{
+//		Node* n = Allocnode(data);
+//		Node* nhead = head->next;
+//		head->next = n;
+//		n->prev = head;
+//		n->next = nhead;
+//		nhead->prev = n;
+//	}
+//	void InitList()
+//	{
+//		head = Allocnode(0);
+//		tail = Allocnode(0);
+//		head->next = tail;
+//		tail->prev = head;
+//	}
+//	void UnInitList()
+//	{
+//		for (Node* p = head; p;)
+//		{
+//			Node* np = p->next;
+//			delete p;
+//			p = np;
+//		}
+//		head = NULL;
+//		tail = NULL;
+//	}
+//	void PrintNextList()
+//	{
+//		for (Node* p = head->next; p != tail; p = p->next)
+//			printf("%d ", p->data);
+//		printf("\n");
+//	}
+//	void EraseList(Node* p)
+//	{
+//		Node* pp = p->prev;
+//		Node* np = p->next;
+//
+//		pp->next = np;
+//		np->prev = pp;
+//
+//		delete p;
+//	}
+//	void InsertList(Node* p, int data)
+//	{
+//		Node* n = Allocnode(data);
+//		Node* pp = p->prev;
+//		pp->next = n;
+//		n->prev = pp;
+//		n->next = p;
+//		p->prev = n;
+//	}
+//	//모든 원소를 순회하며 참조하는 인터페이스
+//	Node* GetHead()
+//	{
+//		return head->next;
+//	}
+//	int HasNext(Node* p)
+//	{
+//		return tail != p;
+//	}
+//	Node* Next(Node* p)
+//	{
+//		return p->next;
+//	}
+//	int GetData(Node* p)
+//	{
+//		return p->data;
+//	}
+//};
+//void main()
+//{
+//	List lt;
+//
+//
+//	lt.InitList();
+//
+//	lt.AddNextList(10);
+//	lt.AddNextList(20);
+//	lt.AddNextList(30);
+//	lt.AddNextList(40);
+//	lt.AddNextList(50);
+//	for(Node* p = lt.GetHead(); lt.HasNext(p); p = lt.Next(p))
+//		if (lt.GetData(p) == 30)
+//		{
+//			lt.EraseList(p);
+//			break;
+//		}
+//	lt.PrintNextList();
+//}
+
+
+
+
+//#include <stdio.h>
+//
+//struct Node
+//{
+//	int data;
+//	Node* prev;
+//	Node* next;
+//};
+//struct List
+//{
+//	Node* head;
+//	Node* tail;
+//};
+//Node* Allocnode(int data)
+//{
+//	Node* n = new Node;
+//	n->data = data;
+//	n->next = n->prev = NULL;
+//	return n;
+//}
+//void AddNextList(List& lt, int data)
+//{
+//	Node* n = Allocnode(data);
+//	Node* ptail = lt.tail->prev;
+//	ptail->next = n;
+//	n->prev = ptail;
+//	n->next = lt.tail;
+//	lt.tail->prev = n;
+//}
+//void AddPrevList(List& lt, int data)
+//{
+//	Node* n = Allocnode(data);
+//	Node* nhead = lt.head->next;
+//	lt.head->next = n;
+//	n->prev = lt.head;
+//	n->next = nhead;
+//	nhead->prev = n;
+//}
+//void InitList(List& lt)
+//{
+//	lt.head = Allocnode(0);
+//	lt.tail = Allocnode(0);
+//	lt.head->next = lt.tail;
+//	lt.tail->prev = lt.head;
+//}
+//void UnInitList(List& lt)
+//{
+//	for (Node* p = lt.head; p;)
+//	{
+//		Node* np = p->next;
+//		delete p;
+//		p = np;
+//	}
+//	lt.head = NULL;
+//	lt.tail = NULL;
+//}
+//void PrintNextList(List& lt)
+//{
+//	for (Node* p = lt.head->next; p != lt.tail; p = p->next)
+//		printf("%d ", p->data);
+//	printf("\n");
+//}
+//void EraseList(List& lt, Node* p)
+//{
+//	Node* pp = p->prev;
+//	Node* np = p->next;
+//
+//	pp->next = np;
+//	np->prev = pp;
+//
+//	delete p;
+//}
+//void InsertList(List& lt, Node* p, int data)
+//{
+//	Node* n = Allocnode(data);
+//	Node* pp = p->prev;
+//	pp->next = n;
+//	n->prev = pp;
+//	n->next = p;
+//	p->prev = n;
+//}
+////모든 원소를 순회하며 참조하는 인터페이스
+//Node* GetHead(List& lt)
+//{
+//	return lt.head->next;
+//}
+//int HasNext(List& lt, Node* p)
+//{
+//	return lt.tail != p;
+//}
+//Node* Next(List& lt, Node* p)
+//{
+//	return p->next;
+//}
+//int GetData(List& lt, Node* p)
+//{
+//	return p->data;
+//}
+//void main()
+//{
+//	List lt;
+//
+//
+//	InitList(lt);
+//
+//	AddNextList(lt, 10);
+//	AddNextList(lt, 20);
+//	AddNextList(lt, 30);
+//	AddNextList(lt, 40);
+//	AddNextList(lt, 50);
+//
+//	Node* p = GetHead(lt);
+//	p = Next(lt, p);
+//	EraseList(lt,p);
+//
+//	p = GetHead(lt);
+//	p = Next(lt, p);
+//	InsertList(lt, p, 100);
+//
+//	
+//
+//	for (Node* p = GetHead(lt); HasNext(lt, p); p = Next(lt, p))
+//		printf("%d ", GetData(lt, p));
+//	printf("\n");
+//
+//	UnInitList(lt);
+//}
+
+
+
+
+//#include <stdio.h>
+//
+//struct Node
+//{
+//	int data;
+//	Node* prev;
+//	Node* next;
+//};
+//struct List
+//{
+//	Node* head;
+//	Node* tail;
+//};
+//Node* Allocnode(int data)
+//{
+//	Node* n = new Node;
+//	n->data = data;
+//	n->next = n->prev = NULL;
+//	return n;
+//}
+//void AddNextList(List& lt, int data)
+//{
+//	Node* n = Allocnode(data);
+//	Node* ptail = lt.tail->prev;
+//	ptail->next = n;
+//	n->prev = ptail;
+//	n->next = lt.tail;
+//	lt.tail->prev = n;
+//}
+//void AddPrevList(List& lt, int data)
+//{
+//	Node* n = Allocnode(data);
+//	Node* nhead = lt.head->next;
+//	lt.head->next = n;
+//	n->prev = lt.head;
+//	n->next = nhead;
+//	nhead->prev = n;
+//}
+//void InitList(List& lt)
+//{
+//	lt.head = Allocnode(0);
+//	lt.tail = Allocnode(0);
+//	lt.head->next = lt.tail;
+//	lt.tail->prev = lt.head;
+//}
+//void UnInitList(List& lt)
+//{
+//	for (Node* p = lt.head; p;)
+//	{
+//		Node* np = p->next;
+//		delete p;
+//		p = np;
+//	}
+//	lt.head = NULL;
+//	lt.tail = NULL;
+//}
+//void PrintNextList(List &lt)
+//{
+//	for (Node* p = lt.head->next; p != lt.tail; p = p->next)
+//		printf("%d ", p->data);
+//	printf("\n");
+//}
+//void EraseList(List& lt, Node* p)
+//{
+//	Node* pp = p->prev;
+//	Node* np = p->next;
+//
+//	pp->next = np;
+//	np->prev = pp;
+//
+//	delete p;
+//}
+//void InsertList(List& lt, Node* p, int data)
+//{
+//	Node* n = Allocnode(data);
+//	Node* pp = p->prev;
+//	pp->next = n;
+//	n->prev = pp;
+//	n->next = p;
+//	p->prev = n;
+//}
+////모든 원소를 순회하며 참조하는 인터페이스
+//Node* GetHead(List& lt)
+//{
+//	return lt.head->next;
+//}
+//int HasNext(List& lt, Node* p)
+//{
+//	return lt.tail != p;
+//}
+//Node* Next(List& lt, Node* p)
+//{
+//	return p->next;
+//}
+//int GetData(List& lt, Node* p)
+//{
+//	return p->data;
+//}
+//void main()
+//{
+//	List lt;
+//
+//
+//	InitList(lt);
+//
+//	AddNextList(lt, 10);
+//	AddNextList(lt, 20);
+//	AddNextList(lt, 30);
+//	AddNextList(lt, 40);
+//	AddNextList(lt, 50);
+//
+//	EraseList(lt, lt.head->next->next); 
+//	InsertList(lt, lt.head->next->next, 100);
+//
+//	//PrintNextList(lt);
+//
+//	for (Node* p = GetHead(lt); HasNext(lt, p); p = Next(lt, p))
+//		printf("%d ", GetData(lt,p));
+//	printf("\n");
+//
+//	UnInitList(lt);
+//}
+
+
+
+
+//#include <stdio.h>
+//#include <list>
+//using namespace std;
+//int main()
+//{
+//	list<int> lt;
+//
+//
+//	lt.push_back(10); //1.
+//	lt.push_back(20);
+//	lt.push_back(30);
+//	//lt.push_front(60); //2.
+//
+//	list<int>::iterator iter = lt.begin();
+//	++iter;
+//
+//	lt.insert(iter, 100); //3.
+//	for (list<int>::iterator iter = lt.begin(); iter != lt.end(); ++iter)
+//		printf("%d ", *iter); //5.
+//	printf("\n");
+//
+//	iter = lt.begin();
+//	++iter;
+//	lt.erase(iter); //4.
+//
+//	for (list<int>::iterator iter = lt.begin(); iter != lt.end(); ++iter)
+//		printf("%d ", *iter);
+//	printf("\n");
+//
+//	//return 0;
+//}
+
+
+
+
+//#include <stdio.h>
+//#include <list>
+//using namespace std;
+//int main()
+//{
+//	list<int> lt;
+//
+//
+//	lt.push_back(10);
+//	lt.push_back(20);
+//	lt.push_back(30);
+//	//lt.push_front(60);
+//
+//	list<int>::iterator iter = lt.begin();
+//	++iter;
+//
+//	lt.insert(iter, 100);
+//	for (list<int>::iterator iter = lt.begin(); iter != lt.end(); ++iter)
+//		printf("%d ", *iter);
+//	printf("\n");
+//
+//	iter = lt.begin();
+//	++iter;
+//	lt.erase(iter);
+//
+//	for (list<int>::iterator iter = lt.begin(); iter != lt.end(); ++iter)
+//		printf("%d ", *iter);
+//	printf("\n");
+//
+//	//return 0;
+//}
+
+
+
+
+//#include <stdio.h>
+//#include <list>
+//using namespace std;
+//int main()
+//{
+//	list<int> lt;
+//
+//
+//	lt.push_back(10);
+//	lt.push_back(20);
+//	lt.push_back(30);
+//	//lt.push_front(60);
+//
+//	list<int>::iterator iter = lt.begin();
+//	++iter;
+//
+//	lt.insert(iter, 100);
+//	for (list<int>::iterator iter = lt.begin(); iter != lt.end(); ++iter)
+//		printf("%d ", *iter);
+//	printf("\n");
+//	//return 0;
+//}
+
+
+
+
+//#include <stdio.h>
+//
+//struct Node
+//{
+//	int data;
+//	Node* prev;
+//	Node* next;
+//};
+//struct List
+//{
+//	Node* head;
+//	Node* tail;
+//};
+//Node* Allocnode(int data)
+//{
+//	Node* n = new Node;
+//	n->data = data;
+//	n->next = n->prev = NULL;
+//	return n;
+//}
+//void AddNextList(List& lt, int data)
+//{
+//	Node* n = Allocnode(data);
+//	Node* ptail = lt.tail->prev;
+//	ptail->next = n;
+//	n->prev = ptail;
+//	n->next = lt.tail;
+//	lt.tail->prev = n;
+//}
+//void AddPrevList(List& lt, int data)
+//{
+//	Node* n = Allocnode(data);
+//	Node* nhead = lt.head->next;
+//	lt.head->next = n;
+//	n->prev = lt.head;
+//	n->next = nhead;
+//	nhead->prev = n;
+//}
+//void InitList(List& lt)
+//{
+//	lt.head = Allocnode(0);
+//	lt.tail = Allocnode(0);
+//	lt.head->next = lt.tail;
+//	lt.tail->prev = lt.head;
+//}
+//void UnInitList(List& lt)
+//{
+//	for (Node* p = lt.head; p;)
+//	{
+//		Node* np = p->next;
+//		delete p;
+//		p = np;
+//	}
+//	lt.head = NULL;
+//	lt.tail = NULL;
+//}
+//void PrintNextList(List &lt)
+//{
+//	for (Node* p = lt.head->next; p != lt.tail; p = p->next)
+//		printf("%d", p->data);
+//	printf("\n");
+//}
+//void main()
+//{
+//	List lt;
+//
+//
+//	InitList(lt);
+//
+//	AddNextList(lt, 10);
+//	AddNextList(lt, 20);
+//	AddNextList(lt, 30);
+//	AddNextList(lt, 40);
+//	AddNextList(lt, 50);
+//	AddPrevList(lt, 60);
+//
+//	PrintNextList(lt);
+//
+//	for (Node* p = lt.tail->prev; p != lt.head; p = p->prev)
+//		printf("%d", p->data);
+//	printf("\n");
+//
+//	UnInitList(lt);
+//}
+
+
+
+
+
+//#include <stdio.h>
+//
+//struct Node
+//{
+//	int data;
+//	Node* prev;
+//	Node* next;
+//};
+//struct List
+//{
+//	Node* head;
+//	Node* tail;
+//};
+//Node* Allocnode(int data)
+//{
+//	Node* n = new Node;
+//	n->data = data;
+//	n->next = n->prev = NULL;
+//	return n;
+//}
+//void AddNextList(List &lt, int data)
+//{
+//	Node* n = Allocnode(data);
+//	Node* ptail = lt.tail->prev;
+//	ptail->next = n;
+//	n->prev = ptail;
+//	n->next = lt.tail;
+//	lt.tail->prev = n;
+//}
+//void AddPrevList(List &lt, int data)
+//{
+//	Node* n = Allocnode(data);
+//	Node* nhead = lt.head->next;
+//	lt.head->next = n;
+//	n->prev = lt.head;
+//	n->next = nhead;
+//	nhead->prev = n;
+//}
+//void InitList(List &lt)
+//{
+//	lt.head = Allocnode(0);
+//	lt.tail = Allocnode(0);
+//	lt.head->next = lt.tail;
+//	lt.tail->prev = lt.head;
+//}
+//void UnInitList(List &lt)
+//{
+//	for (Node* p = lt.head; p;)
+//	{
+//		Node* np = p->next;
+//		delete p;
+//		p = np;
+//	}
+//	lt.head = NULL;
+//	lt.tail = NULL;
+//}
+//void main()
+//{
+//	List lt;
+//
+//	
+//	InitList(lt);
+//
+//	AddNextList(lt, 10);
+//	AddNextList(lt, 20);
+//	AddNextList(lt, 30);
+//	AddNextList(lt, 40);
+//	AddNextList(lt, 50);
+//	AddPrevList(lt, 60);
+//
+//	for (Node* p = lt.head->next; p != lt.tail; p = p->next) 
+//		printf("%d", p->data);
+//	printf("\n");
+//
+//	for (Node* p = lt.tail->prev; p != lt.head; p = p->prev)
+//		printf("%d", p->data);
+//	printf("\n");
+//
+//	UnInitList(lt);
+//}
+
+
+
+
+
+//#include <stdio.h>
+//
+//struct Node
+//{
+//	int data;
+//	Node* prev;
+//	Node* next;
+//};
+//
+//Node* Allocnode(int data)
+//{
+//	Node* n = new Node;
+//	n->data = data;
+//	n->next = n->prev = NULL;
+//	return n;
+//}
+//void AddNextList(Node* head, Node* tail, int data)
+//{
+//	Node* n = Allocnode(data);
+//	Node* ptail = tail->prev;
+//	ptail->next = n;
+//	n->prev = ptail;
+//	n->next = tail;
+//	tail->prev = n;
+//}
+//void AddPrevList(Node* head, Node* tail, int data)
+//{
+//	Node* n = Allocnode(data);
+//	Node* nhead = head->next;
+//	head->next = n;
+//	n->prev = head;
+//	n->next = nhead;
+//	nhead->prev = n;
+//}
+//void InitList(Node*& head, Node*& tail)
+//{
+//	head = Allocnode(0);
+//	tail = Allocnode(0);
+//	head->next = tail;
+//	tail->prev = head;
+//}
+//void UnInitList(Node*& head, Node*& tail)
+//{
+//	for (Node* p = head; p;)
+//	{
+//		Node* np = p->next;
+//		delete p;
+//		p = np;
+//	}
+//	head = NULL;
+//	tail = NULL;
+//}
+//void main()
+//{
+//	Node* head = NULL;
+//	Node* tail = NULL;
+//	InitList(head, tail);
+//
+//	AddNextList(head, tail, 10);
+//	AddNextList(head, tail, 20);
+//	AddNextList(head, tail, 30);
+//	AddNextList(head, tail, 40);
+//	AddNextList(head, tail, 50);
+//	AddPrevList(head, tail, 60);
+//
+//	for (Node* p = head->next; p != tail; p = p->next) //뒤쪽으로 출력
+//		printf("%d", p->data);
+//	printf("\n");
+//
+//	for (Node* p = tail->prev; p != head; p = p->prev)// 앞쪽으로 출력
+//		printf("%d", p->data);
+//	printf("\n");
+//
+//	UnInitList(head, tail);
+//}
+
+
+//연결리스트는 스택과 큐와 다르게 특정위치 삽입이 가능하다.
+//모든 원소를 처음부터 끝까지 참조할 수 있어야한다.
