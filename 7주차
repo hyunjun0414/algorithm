@@ -1,0 +1,449 @@
+//재귀함수 이용 미로찾기
+#include <stdio.h>
+#include <stdlib.h>
+#include <Windows.h>
+int map[10][10] = {
+	0,1,1,1,1,1,0,1,0,0,
+	0,1,0,0,0,0,0,0,0,0,
+	0,1,0,0,1,1,0,0,0,0,
+	0,1,0,0,0,0,0,1,0,0,
+	0,1,1,1,1,0,0,0,0,0,
+	0,0,0,0,1,0,0,1,0,0,
+	0,0,0,0,1,1,1,1,0,0,
+	0,0,0,0,1,0,0,1,1,9,
+	0,0,1,0,1,0,0,1,0,0,
+	0,0,0,0,1,1,1,1,1,1
+};
+void PrintMap(int map[][10])
+{
+	system("cls");
+	Sleep(300);
+	for (int i = 0; i < 10; i++)
+	{
+		for (int j = 0; j < 10; j++)
+			printf("%3d", map[i][j]);
+		printf("\n");
+	}
+	Sleep(300);
+}
+void _Fill(int image[][10], int i, int j, int oldColor, int newColor)
+{
+	if (!(0 <= i && i < 10 && 0 <= j && j < 10))
+		return;
+	if (image[i][j] != oldColor)
+		return;
+
+	image[i][j] = newColor;
+	PrintMap(image); /////변경값 확인을 위한 코드
+	_Fill(image, i, j + 1, oldColor, newColor);
+	_Fill(image, i + 1, j, oldColor, newColor);
+	_Fill(image, i, j - 1, oldColor, newColor);
+	_Fill(image, i - 1, j, oldColor, newColor);
+}
+void Fill(int image[][10], int i, int j, int newColor)
+{
+	if (image[i][j] == newColor)
+		return;
+
+	_Fill(image, i, j, image[i][j], newColor);
+}
+int Maze(int map[][10], int i, int j)
+{
+	if (!(0 <= i && i < 10 && 0 <= j && j < 10))
+		return 0;
+	if (map[i][j] == 9)
+		return 1;
+	if (map[i][j] != 1)
+		return 0;
+	map[i][j] = 2;
+	PrintMap(map);
+
+
+	if (Maze(map, i, j + 1))
+		return 1;
+	if (Maze(map, i + 1, j))
+		return 1;
+	if (Maze(map, i, j - 1))
+		return 1;
+	if (Maze(map, i - 1, j))
+		return 1;
+}
+int main()
+{
+	if (Maze(map, 0, 1))
+		printf("출구발견!\n");
+	else
+		printf("출구없음!\n");
+
+}
+
+
+
+
+////재귀함수 이용 미로찾기
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <Windows.h>
+//int map[10][10] = {
+//	0,1,1,1,1,1,0,1,0,0,
+//	0,1,0,0,0,0,0,0,0,0,
+//	0,1,0,0,1,1,0,0,0,0,
+//	0,1,0,0,0,0,0,1,0,0,
+//	0,1,1,1,1,0,0,0,0,0,
+//	0,0,0,0,1,0,0,1,0,0,
+//	0,0,0,0,1,1,1,1,0,0,
+//	0,0,0,0,1,0,0,1,1,9,
+//	0,0,1,0,1,0,0,1,0,0,
+//	0,0,0,0,1,1,1,1,1,1
+//};
+//void PrintMap(int map[][10])
+//{
+//	system("cls");
+//	Sleep(300);
+//	for (int i = 0; i < 10; i++)
+//	{
+//		for (int j = 0; j < 10; j++)
+//			printf("%3d", map[i][j]);
+//		printf("\n");
+//	}
+//	Sleep(300);
+//}
+//void _Fill(int image[][10], int i, int j, int oldColor, int newColor)
+//{
+//	if (!(0 <= i && i < 10 && 0 <= j && j < 10))
+//		return;
+//	if (image[i][j] != oldColor)
+//		return;
+//
+//	image[i][j] = newColor;
+//	PrintMap(image); /////변경값 확인을 위한 코드
+//	_Fill(image, i, j + 1, oldColor, newColor);
+//	_Fill(image, i + 1, j, oldColor, newColor);
+//	_Fill(image, i, j - 1, oldColor, newColor);
+//	_Fill(image, i - 1, j, oldColor, newColor);
+//}
+//void Fill(int image[][10], int i, int j, int newColor)
+//{
+//	if (image[i][j] == newColor)
+//		return;
+//
+//	_Fill(image, i, j, image[i][j], newColor);
+//}
+//int Maze(int map[][10], int i, int j)
+//{
+//	if (!(0 <= i && i < 10 && 0 <= j && j < 10))
+//		return 0;
+//	if (map[i][j] != 1)
+//		return 0;
+//	map[i][j] = 2;
+//	PrintMap(map);
+//	Maze(map, i, j + 1);
+//	Maze(map, i + 1, j);
+//	Maze(map, i, j - 1);
+//	Maze(map, i - 1, j);
+//}
+//int main()
+//{
+//	if (Maze(map, 0, 1))
+//		printf("출구발견!\n");
+//	else
+//		printf("출구없음!\n");
+//
+//}
+
+
+
+
+////재귀함수 이용 미로찾기
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <Windows.h>
+//int map[10][10] = {
+//	0,1,1,1,1,1,0,1,0,0,
+//	0,1,0,0,0,0,0,0,0,0,
+//	0,1,0,0,1,1,0,0,0,0,
+//	0,1,0,0,0,0,0,1,0,0,
+//	0,1,1,1,1,0,0,0,0,0,
+//	0,0,0,0,1,0,0,1,0,0,
+//	0,0,0,0,1,1,1,1,0,0,
+//	0,0,0,0,1,0,0,1,1,9,
+//	0,0,1,0,1,0,0,1,0,0,
+//	0,0,0,0,1,1,1,1,1,1
+//};
+//void PrintMap(int map[][10])
+//{
+//	system("cls");
+//	Sleep(300);
+//	for (int i = 0; i < 10; i++)
+//	{
+//		for (int j = 0; j < 10; j++)
+//			printf("%3d", map[i][j]);
+//		printf("\n");
+//	}
+//	Sleep(300);
+//}
+//void _Fill(int image[][10], int i, int j, int oldColor, int newColor)
+//{
+//	if (!(0 <= i && i < 10 && 0 <= j && j < 10))
+//		return;
+//	if (image[i][j] != oldColor)
+//		return;
+//
+//	image[i][j] = newColor;
+//	PrintMap(image); /////변경값 확인을 위한 코드
+//	_Fill(image, i, j + 1, oldColor, newColor);
+//	_Fill(image, i + 1, j, oldColor, newColor);
+//	_Fill(image, i, j - 1, oldColor, newColor);
+//	_Fill(image, i - 1, j, oldColor, newColor);
+//}
+//void Fill(int image[][10], int i, int j, int newColor)
+//{
+//	if (image[i][j] == newColor)
+//		return;
+//
+//	_Fill(image, i, j, image[i][j], newColor);
+//}
+//int Maze(int map[][10], int i, int j)
+//{
+//	return 0;
+//}
+//int main()
+//{
+//	if (Maze(map, 0, 1))
+//		printf("출구발견!\n");
+//	else
+//		printf("출구없음!\n");
+//
+//}
+
+
+
+
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <Windows.h>
+//int image[10][10] = {
+//	0,0,2,0,0,0,2,0,0,0,
+//	0,2,2,0,0,0,3,0,2,0,
+//	0,2,2,0,0,2,0,0,0,2,
+//	0,2,0,0,0,0,0,0,0,2,
+//	0,0,0,0,0,2,0,0,0,0,
+//	0,2,3,2,0,2,0,0,0,0,
+//	8,0,0,0,0,0,0,8,0,0,
+//	0,2,3,2,0,0,2,2,0,0,
+//	2,2,0,0,3,0,0,0,0,0,
+//	0,0,0,0,2,8,2,0,0,0
+//};
+//void PrintImage(int image[][10])
+//{
+//	system("cls");
+//	Sleep(300);
+//	for (int i = 0; i < 10; i++)
+//	{
+//		for (int j = 0; j < 10; j++)
+//			printf("%3d", image[i][j]);
+//		printf("\n");
+//	}
+//	Sleep(300);
+//}
+//void _Fill(int image[][10], int i, int j, int oldColor, int newColor)
+//{
+//	if (!(0 <= i && i < 10 && 0 <= j && j < 10))
+//		return;
+//	if (image[i][j] != oldColor)
+//		return;
+//
+//	image[i][j] = newColor;
+//	PrintImage(image); /////변경값 확인을 위한 코드
+//	_Fill(image, i, j + 1, oldColor, newColor);
+//	_Fill(image, i + 1, j, oldColor, newColor);
+//	_Fill(image, i, j - 1, oldColor, newColor);
+//	_Fill(image, i - 1, j, oldColor, newColor);
+//}
+//void Fill(int image[][10], int i, int j, int newColor)
+//{
+//	if (image[i][j] == newColor)
+//		return;
+//
+//	_Fill(image, i, j, image[i][j], newColor);
+//}
+//
+//int main()
+//{
+//	PrintImage(image);
+//	Fill(image, 4, 4, 5);
+//	PrintImage(image);
+//
+//}
+
+
+
+//재귀함수 이용 색칠하기
+//#include <stdio.h>
+//int image[10][10] = {
+//	0,0,2,0,0,0,2,0,0,0,
+//	0,2,2,0,0,0,3,0,2,0,
+//	0,2,2,0,0,2,0,0,0,2,
+//	8,2,0,0,0,0,0,0,0,2,
+//	0,0,0,0,0,2,0,0,0,0,
+//	0,2,3,2,0,2,0,0,0,0,
+//	0,0,0,0,0,0,0,8,0,0,
+//	0,2,3,2,0,0,2,2,0,0,
+//	2,2,0,0,3,0,0,0,0,0,
+//	0,0,0,0,2,8,2,0,0,0
+//};
+//void _Fill(int image[][10], int i, int j, int oldColor, int newColor)
+//{
+//	if (!(0 <= i && i < 10 && 0 <= j && j < 10))
+//		return;
+//	if (image[i][j] != oldColor)
+//		return;
+//
+//	image[i][j] = newColor;
+//	_Fill(image, i, j + 1, oldColor, newColor);
+//	_Fill(image, i + 1, j, oldColor, newColor);
+//	_Fill(image, i, j - 1, oldColor, newColor);
+//	_Fill(image, i - 1, j, oldColor, newColor);
+//}
+//void Fill(int image[][10], int i, int j, int newColor)
+//{
+//	if (image[i][j] == newColor)
+//		return;
+//
+//	_Fill(image, i, j, image[i][j], newColor);
+//}
+//void PrintImage(int image[][10])
+//{
+//	for (int i = 0; i < 10; i++)
+//	{
+//		for (int j = 0; j < 10; j++)
+//			printf("%3d", image[i][j]);
+//		printf("\n");
+//	}
+//}
+//int main()
+//{
+//	PrintImage(image);
+//	Fill(image, 1, 2, 5);
+//	PrintImage(image);
+//
+//}
+
+
+
+
+//#include <stdio.h>
+//
+//int _BinSearch(int list[], int left, int right, int key)
+//{
+//	if (left <= right)
+//	{
+//		int middle = (left + right) / 2;
+//		if (key < list[middle])
+//		{
+//			left = left;
+//			right = middle - 1;
+//			return _BinSearch(list, left, middle-1, key);
+//		}
+//		else if (key > list[middle])
+//		{
+//			left = middle + 1;
+//			right = right;
+//			return _BinSearch(list, middle+1, right, key);
+//		}
+//		else
+//			return middle;
+//	}
+//	return -1;
+//}
+//int BinSearch(int list[], int size, int key)
+//{
+//	return _BinSearch(list, 0, size - 1, key);
+//}
+//int main()
+//{
+//	int list[10] = { 35,38,40,46,52,71,83,90 };
+//	int size = 8;
+//
+//	int idx = BinSearch(list, size, 83);
+//	if (idx != -1)
+//	{
+//		printf("%d : %d\n", idx, list[idx]);
+//	}
+//	else {
+//		printf("값이 없다.\n");
+//	}
+//
+//}
+
+
+
+
+//#include <stdio.h>
+//int _BinSearch(int list[], int left, int right, int key)
+//{
+//	if (left < right)
+//	{
+//		int middle = (left + right) / 2;
+//		if (key < list[middle])
+//		{
+//			left = left;
+//			right = middle - 1;
+//			return _BinSearch(list, left, right, key);
+//		}
+//		else if (key > list[middle])
+//		{ 
+//			left = middle+1;
+//			right = right;
+//			return _BinSearch(list, left, right, key);
+//		}
+//		else
+//			return middle;
+//	}
+//	return -1;
+//}
+//int BinSearch(int list[], int size, int key)
+//{
+//	return _BinSearch(list, 0, size - 1, key);
+//}
+//int main()
+//{
+//	int list[10] = { 35,38,40,46,52,71,83,90 };
+//	int size = 8;
+//
+//	int idx = BinSearch(list, size, 83);
+//	if (idx != -1)
+//	{
+//		printf("%d : %d\n", idx, list[idx]);
+//	}
+//	else {
+//		printf("값이 없다.\n");
+//	}
+//
+//}
+
+
+
+
+//#include <stdio.h>
+//int BinSearch(int list[], int size, int key)
+//{
+//	return -1;
+//}
+//int main()
+//{
+//	int list[10] = { 35,38,40,46,52,71,83,90 };
+//	int size = 8;
+//
+//	int idx = BinSearch(list, size, 83);
+//	if (idx != -1)
+//	{
+//		printf("%d : %d\n", idx, list[idx]);
+//	}
+//	else {
+//		printf("값이 없다.\n");
+//	}
+//	
+//}
+
+//이진검색은 정렬이 되어있다는 전제하에 작동한다.
