@@ -1,0 +1,742 @@
+#include <stdio.h>
+void Swap(int& a, int& b)
+{
+	int temp = a;
+	a = b;
+	b = temp;
+}
+void PrintList(const int list[], int size)
+{
+	for (int i = 0; i < size; i++)
+		printf("%5d", list[i]);
+	printf("\n\n");
+}
+void QuickSort(int list[], int size)
+{
+
+}
+int main() {
+	int list[100] = { 0 };
+	int size = 100;
+
+	
+	PrintList(list, size);
+	QuickSort(list, size);
+	PrintList(list, size);
+}
+//�� ������ ��κ� ����Լ� ���
+
+
+
+
+//#include <stdio.h>
+//#include <stdlib.h>
+//#include <time.h>
+//void Swap(int& a, int& b)
+//{
+//	int temp = a;
+//	a = b;
+//	b = temp;
+//}
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n\n");
+//}
+//void BubbleSort(int list[], int size)
+//{
+//	for (int j = 0; j < size - 1; ++j)
+//	{
+//		for (int i = 0; i < size - 1 - j; ++i)
+//		{
+//			if (list[i] > list[i + 1])
+//				Swap(list[i], list[i + 1]);
+//		}
+//	}
+//}
+//int main() {
+//	int list[100] = {0};
+//	int size = 100;
+//
+//	srand((unsigned)time(NULL));
+//	for (int i = 0; i < size; ++i)
+//		list[i] = rand() % 1000;
+//
+//	PrintList(list, size);
+//	BubbleSort(list, size);
+//	PrintList(list, size);
+//}
+
+
+
+
+
+//#include <stdio.h>
+//void Swap(int& a, int& b)
+//{
+//	int temp = a;
+//	a = b;
+//	b = temp;
+//}
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n");
+//}
+//void BubbleSort(int list[], int size)
+//{
+//	for (int j = 0; j < size-1; ++j)
+//	{
+//		for (int i = 0; i < size -1-j; ++i)
+//		{
+//			if (list[i] > list[i + 1])
+//				Swap(list[i], list[i + 1]);
+//		}
+//	}
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,54 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//	BubbleSort(list, size);
+//	PrintList(list, size);
+//}
+
+
+
+
+
+//#include <stdio.h>
+//void Swap(int& a, int& b)
+//{
+//	int temp = a;
+//	a = b;
+//	b = temp;
+//}
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n");
+//}
+//void Insertion_Sort(int list[], int size)
+//{
+//	for (int i = 1; i < size; ++i)
+//	{
+//		int cur = list[i];
+//		int j = i - 1;
+//		while (j >= 0 )
+//		{
+//			if (cur < list[j])
+//				list[j + 1] = list[j--];
+//			else
+//				break;
+//		}
+//		list[j + 1] = cur;
+//	}
+//}
+//int main() {
+//	//int list[10] = { 59,45,30,67,83,21,95,54 };
+//	int list[10] = { 21,30,45,54,83,59,5,67 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//	Insertion_Sort(list, size);
+//	PrintList(list, size);
+//}
+
+
+
+
+
+//#include <stdio.h>
+//void Swap(int& a, int& b)
+//{
+//	int temp = a;
+//	a = b;
+//	b = temp;
+//}
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n");
+//}
+//void Insertion_Sort(int list[], int size)
+//{
+//	for (int j = 1; j < size; ++j)
+//	{
+//		int cur = list[j];
+//		int i = j - 1;
+//		for (; i >= 0; --i)
+//		{
+//			if (cur < list[i])
+//				list[i + 1] = list[i];
+//			else
+//				break;
+//		}
+//		list[i + 1] = cur;
+//	}
+//}
+//int main() {
+//	//int list[10] = { 59,45,30,67,83,21,95,54 };
+//	int list[10] = { 21,30,45,54,83,59,5,67 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//	Insertion_Sort(list, size);
+//	PrintList(list, size);
+//}
+
+
+
+
+
+//#include <stdio.h>
+//void Swap(int& a, int& b)
+//{
+//	int temp = a;
+//	a = b;
+//	b = temp;
+//}
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n");
+//}
+//void Insertion_Sort(int list[], int size)
+//{
+//	for (int j = 7; j < size; ++j)
+//	{
+//		int cur = list[j];
+//		int i = j - 1;
+//		for (; i >= 0; --i)
+//		{
+//			if (cur < list[i])
+//				list[i + 1] = list[i];
+//			else
+//				break;
+//		}
+//		list[i + 1]=cur;
+//	}
+//}
+//int main() {
+//	//int list[10] = { 59,45,30,67,83,21,95,54 };
+//	int list[10] = { 21,30,45,54,83,59,5,67 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//	Insertion_Sort(list, size);
+//	PrintList(list, size);
+//}
+
+
+
+
+
+//#include <stdio.h>
+//void Swap(int& a, int& b)
+//{
+//	int temp = a;
+//	a = b;
+//	b = temp;
+//}
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n");
+//}
+//void Insertion_Sort(int list[], int size)
+//{
+//	int cur = list[4];
+//	for (int i = 3 ; i > 0; --i)
+//	{
+//		if (cur < list[i])
+//			list[i + 1] = list[i];
+//		else
+//			break;
+//	}
+//}
+//int main() {
+//	//int list[10] = { 59,45,30,67,83,21,95,54 };
+//	int list[10] = { 21,30,45,54,83,59,95,67 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//	Insertion_Sort(list, size);
+//	PrintList(list, size);
+//}
+
+
+
+
+
+//#include <stdio.h>
+//void Swap(int& a, int& b)
+//{
+//	int temp = a;
+//	a = b;
+//	b = temp;
+//}
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n");
+//}
+//int Min(const int list[], int startIdx, int size)
+//{
+//	int minIdx = startIdx;
+//
+//	for (int i = startIdx + 1; i < size; ++i)
+//		if (list[i] < list[minIdx])
+//			minIdx = i;
+//	return minIdx;
+//}
+//void SelectionSort(int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//	{
+//		int idx;
+//		idx = Min(list, i, size);
+//		Swap(list[i], list[idx]);
+//	}
+//
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,54 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//	SelectionSort(list, size);
+//	PrintList(list, size);
+//}
+
+
+
+
+
+//#include <stdio.h>
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n");
+//}
+//int Min(const int list[], int startIdx, int size)
+//{
+//	int minIdx = startIdx;
+//
+//	for (int i = startIdx + 1; i < size; ++i)
+//		if (list[i] < list[minIdx])
+//			minIdx = i;
+//	return minIdx;
+//}
+//void Swap(int* pa, int* pb)
+//{
+//	int temp = *pa;
+//	*pa = *pb;
+//	*pb = temp;
+//}
+//void SelectionSort(int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//	{
+//		int idx;
+//		idx = Min(list, i, size);
+//		Swap(&list[i], &list[idx]);
+//	}
+//
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,54 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//	SelectionSort(list, size);
+//	PrintList(list, size);
+//}
+
+
+
+
+
+
+//#include <stdio.h>
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n");
+//}
+//int Min(const int list[], int startIdx, int size)
+//{
+//	int minIdx = startIdx;
+//
+//	for (int i = startIdx + 1; i < size; ++i)
+//		if (list[i] < list[minIdx])
+//			minIdx = i;
+//	return minIdx;
+//}
+//void Swap(int* pa, int* pb)
+//{
+//	int temp = *pa;
+//	*pa = *pb;
+//	*pb = temp;
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,54 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//	for (int i = 0; i < size; i++)
+//	{
+//		int idx;
+//		idx = Min(list, i, size);
+//		Swap(&list[i], &list[idx]);
+//	}
+//	PrintList(list, size);
+//}
+
+
+
+
+
+//#include <stdio.h>
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n");
+//}
+//int Min(const int list[], int startIdx, int size)
+//{
+//	int minIdx = startIdx;
+//
+//	for (int i = startIdx + 1; i < size; ++i)
+//		if (list[i] < list[minIdx])
+//			minIdx = i;
+//	return minIdx;
+//}
+//void Swap(int* pa, int* pb)
+//{
+//	int temp = *pa;
+//	*pa = *pb;
+//	*pb = temp;
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,54 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//	int idx;
+//	idx = Min(list, 0, size);
+//	Swap(&list[0], &list[idx]);
+//	idx = Min(list, 1, size);
+//	Swap(&list[1], &list[idx]);
+//	idx = Min(list, 2, size);
+//	Swap(&list[2], &list[idx]);
+//
+//	PrintList(list, size);
+//}
+
+
+
+
+
+//#include <stdio.h>
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n");
+//}
+//int Min(const int list[],int startIdx, int size)
+//{
+//	int minIdx = startIdx;
+//
+//	for (int i = startIdx+1; i < size; ++i)
+//		if (list[i] < list[minIdx])
+//			minIdx = i;
+//	return minIdx;
+//}
+//void Swap(int* pa, int* pb)
+//{
+//	int temp = *pa;
+//	*pa = *pb;
+//	*pb = temp;
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,54 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//	int idx = Min(list, 0, size);
+//	printf("%d : %d\n", idx, list[idx]);
+//}
+
+
+
+
+
+//#include <stdio.h>
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n");
+//}
+//int Min(const int list[], int size)
+//{
+//	int minIdx = 0;
+//
+//	for (int i = 1; i < size; ++i)
+//		if (list[i] < list[minIdx])
+//			minIdx = i;
+//	return minIdx;
+//}
+//void Swap(int* pa, int* pb)
+//{
+//	int temp = *pa;
+//	*pa = *pb;
+//	*pb = temp;
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,54 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//
+//	for (int i = 0; i < size - 1; i++)
+//	{
+//		int idx;
+//		idx = Min(list + i, size - i);
+//		Swap(&list[i], &list[idx+i]);
+//	}
+//	PrintList(list, size);
+//
+//}
+
+
+
+
+
+//#include <stdio.h>
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n");
+//}
+//int Min(const int list[], int size)
+//{
+//	int minIdx = 0;
+//
+//	for (int i = 1; i < size; ++i)
+//		if (list[i] < list[minIdx])
+//			minIdx = i;
+//	return minIdx;
+//}
+//void Swap(int* pa, int* pb)
+//{
+//	int temp = *pa;
+//	*pa = *pb;
+//	*pb = temp;
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,54 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//	int idx;
+//	idx = Min(list, size);
+//	Swap(&list[0], &list[idx]);
+//	idx = Min(list+1, size-1);
+//	Swap(&list[0], &list[idx+1]);
+//	PrintList(list, size);
+//
+//}
+
+
+
+
+
+//#include <stdio.h>
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n");
+//}
+//int Min(const int list[], int size)
+//{
+//	int minIdx = 0;
+//
+//	for (int i = 1; i < size; ++i)
+//		if (list[i] < list[minIdx])
+//			minIdx = i;
+//	return minIdx;
+//}
+//void Swap(int* pa, int* pb)
+//{
+//	int temp = *pa;
+//	*pa = *pb;
+//	*pb = temp;
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,54 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//	int idx = Min(list, size);
+//	Swap(&list[0], &list[idx]);
+//	PrintList(list, size);
+//
+//}
+
+
+
+
+
+//#include <stdio.h>
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n");
+//}
+//int Min(const int list[], int size)
+//{
+//	int minIdx = 0;
+//
+//	for (int i = 1; i < size; ++i)
+//		if (list[i] < list[minIdx])
+//			minIdx = i;
+//	return minIdx;
+//}
+//void Swap(int* pa, int* pb)
+//{
+//	int temp = *pa;
+//	*pa = *pb;
+//	*pb = temp;
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,54 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//	Swap(&list[0], &list[4]);
+//	PrintList(list, size);
+//
+//}
+
+
+
+
+
+//#include <stdio.h>
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n");
+//}
+//int Min(const int list[], int size)
+//{
+//	int minIdx = 0;
+//
+//	for (int i = 1; i < size; ++i)
+//		if (list[i] < list[minIdx])
+//			minIdx = i;
+//	return minIdx;
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,54 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//	int minIdx = Min(list, size);
+//	printf("%d : %d\n", minIdx,list[minIdx]);
+//}
+
+
+
+
+//#include <stdio.h>
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n");
+//}
+//int Min(const int list[], int size)
+//{
+//	int min = list[0];
+//
+//	for (int i = 1; i < size; ++i)
+//		if (list[i] < min)
+//			min = list[i];
+//	return min;
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,54 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//	int min = Min(list, size);
+//	printf("%d", min);
+//}
+
+
+
+
+//#include <stdio.h>
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n");
+//}
+//int Min(const int list[], int size)
+//{
+//	int min = 0xfffffff;
+//
+//	for (int i = 0; i < size; ++i)
+//		if (list[i] < min)
+//			min = list[i];
+//	return min;
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,54 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//	int min = Min(list, size);
+//	printf("%d", min);
+//}
+
+
+
+
+//#include <stdio.h>
+//void PrintList(const int list[],int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n");
+//	
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,54 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//}
+
+
+//���� �˰������� ���� ���� ����� �ʿ����.
