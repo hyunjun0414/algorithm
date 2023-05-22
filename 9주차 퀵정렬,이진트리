@@ -1,0 +1,555 @@
+
+//#include <stdio.h>
+//#include<stdlib.h>
+//#include <algorithm>
+//using namespace std;
+//void Swap(int& a, int& b)
+//{
+//	int temp = a;
+//	a = b;
+//	b = temp;
+//}
+//void PrintList(const int list[], int heapSize, int size)
+//{
+//	printf("[");
+//	for (int i = 0; i <= size; i++)
+//	{
+//		printf("%5d", list[i]);
+//		if (heapSize == i)
+//			printf("]");
+//	}
+//	printf("\n\n");
+//}
+//void Push_heap(int list[])
+//{
+//	list[0] += 1;
+//
+//	int child = list[0];
+//	int parent = child / 2;
+//
+//	while (parent >= 1)
+//	{
+//		if (list[parent] < list[child])
+//			Swap(list[parent], list[child]);
+//		else
+//			break;
+//		child = parent;
+//		parent = child / 2;
+//	}
+//}
+//void Make_heap(int list[], int size)
+//{
+//	for (int i = 0; i < size; ++i)
+//		Push_heap(list);
+//}
+//int main() {
+//	int list[10] = { 0, 59,45,30,67,83,21,95,53 };
+//	int size = 8;
+//
+//	PrintList(list, list[0], size);
+//
+//	Make_heap(list, size);
+//	PrintList(list, list[0], size);
+//
+//}
+
+
+
+
+//#include <stdio.h>
+//#include<stdlib.h>
+//#include <algorithm>
+//using namespace std;
+//void Swap(int& a, int& b)
+//{
+//	int temp = a;
+//	a = b;
+//	b = temp;
+//}
+//void PrintList(const int list[], int heapSize, int size)
+//{
+//	printf("[");
+//	for (int i = 0; i <= size; i++)
+//	{
+//		printf("%5d", list[i]);
+//		if (heapSize == i)
+//			printf("]");
+//	}
+//	printf("\n\n");
+//}
+//void Push_heap(int list[])
+//{
+//	list[0] += 1;
+//
+//	int child = list[0];
+//	int parent = child / 2;
+//
+//	while (parent >= 1)
+//	{
+//		if (list[parent] < list[child])
+//			Swap(list[parent], list[child]);
+//		else
+//			break;
+//		child = parent;
+//		parent = child / 2;
+//	}
+//}
+//int main() {
+//	int list[10] = { 0, 59,45,30,67,83,21,95,53 };
+//	int size = 8;
+//
+//	PrintList(list, list[0], size);
+//
+//	for (int i = 0; i < size; ++i)
+//		Push_heap(list);
+//	PrintList(list, list[0], size);
+//
+//}
+
+
+
+
+
+//#include <stdio.h>
+//#include<stdlib.h>
+//#include <algorithm>
+//using namespace std;
+//void Swap(int& a, int& b)
+//{
+//	int temp = a;
+//	a = b;
+//	b = temp;
+//}
+//void PrintList(const int list[], int heapSize, int size)
+//{
+//	printf("[");
+//	for (int i = 0; i <= size; i++)
+//	{
+//		printf("%5d", list[i]);
+//		if (heapSize == i)
+//			printf("]");
+//	}
+//	printf("\n\n");
+//}
+//void Push_heap(int list[])
+//{
+//	list[0] += 1;
+//
+//	int child = list[0];
+//	int parent = child / 2;
+//
+//	while (parent >= 1)
+//	{
+//		if (list[parent] < list[child])
+//			Swap(list[parent], list[child]);
+//		else
+//			break;
+//		child = parent;
+//		parent = child / 2;
+//	}
+//}
+//int main() {
+//	int list[10] = { 3, 59,45,30,67,83,21,95,53 };
+//	int size = 8;
+//
+//	PrintList(list, list[0], size);
+//
+//	Push_heap(list);
+//	PrintList(list, list[0], size);
+//	Push_heap(list);
+//	PrintList(list, list[0], size); 
+//	Push_heap(list);
+//	PrintList(list, list[0], size);
+//	Push_heap(list);
+//	PrintList(list, list[0], size);
+//
+//}
+
+
+
+
+//#include <stdio.h>
+//#include<stdlib.h>
+//#include <algorithm>
+//using namespace std;
+//void PrintList(const int list[], int heapSize, int size)
+//{
+//	printf("[");
+//	for (int i = 0; i <= size; i++)
+//	{
+//		printf("%5d", list[i]);
+//		if (heapSize == i)
+//			printf("]");
+//	}
+//	printf("\n\n");
+//}
+//int main() {
+//	int list[10] = {0, 59,45,30,67,83,21,95,53 };
+//	int size = 8;
+//
+//	PrintList(list, list[0], size);
+//
+//}
+
+
+
+
+//#include <stdio.h>
+//#include<stdlib.h>
+//#include <time.h>
+//#include <algorithm>
+//using namespace std;
+//void PrintList(const int list[], int heapSize, int size)
+//{
+//	printf("[");
+//	if (heapSize == 0)
+//		printf("]");
+//	for (int i = 0; i < size; i++)
+//	{
+//		printf("%5d", list[i]);
+//		if (heapSize - 1 == i)
+//			printf("]");
+//	}
+//	printf("\n\n");
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,53 };
+//	int size = 8;
+//	int heapSize = 0;
+//
+//	PrintList(list, heapSize, size);
+//
+//	heapSize = size;
+//	make_heap(list, list + heapSize);
+//	PrintList(list, heapSize, size);
+//
+//	sort_heap(list, list + heapSize);
+//	heapSize = 0;
+//	PrintList(list, heapSize, size);
+//
+//
+//}
+
+
+
+
+//#include <stdio.h>
+//#include<stdlib.h>
+//#include <time.h>
+//#include <algorithm>
+//using namespace std;
+//void PrintList(const int list[], int heapSize, int size)
+//{
+//	printf("[");
+//	if (heapSize == 0)
+//		printf("]");
+//	for (int i = 0; i < size; i++)
+//	{
+//		printf("%5d", list[i]);
+//		if (heapSize - 1 == i)
+//			printf("]");
+//	}
+//	printf("\n\n");
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,53 };
+//	int size = 8;
+//	int heapSize = 0;
+//
+//	PrintList(list, heapSize, size);
+//
+//	heapSize = size;
+//	make_heap(list, list + heapSize);
+//	PrintList(list, heapSize, size);
+//
+//	pop_heap(list, list + heapSize);
+//	heapSize -= 1;
+//	PrintList(list, heapSize, size);
+//
+//
+//}
+
+
+
+
+
+
+//#include <stdio.h>
+//#include<stdlib.h>
+//#include <time.h>
+//#include <algorithm>
+//using namespace std;
+//void PrintList(const int list[], int heapSize, int size)
+//{
+//	printf("[");
+//	if (heapSize == 0)
+//		printf("]");
+//	for (int i = 0; i < size; i++)
+//	{
+//		printf("%5d", list[i]);
+//		if (heapSize - 1 == i)
+//			printf("]");
+//	}
+//	printf("\n\n");
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,53 };
+//	int size = 8;
+//	int heapSize = 0;
+//
+//	PrintList(list, heapSize, size);
+//
+//	heapSize = size;
+//	make_heap(list, list + heapSize);
+//	PrintList(list, heapSize, size);
+//
+//}
+
+
+
+
+//#include <stdio.h>
+//#include<stdlib.h>
+//#include <time.h>
+//#include <algorithm>
+//using namespace std;
+//void PrintList(const int list[], int heapSize, int size)
+//{
+//	printf("[");
+//	if (heapSize == 0)
+//		printf("]");
+//	for (int i = 0; i < size; i++)
+//	{
+//		printf("%5d", list[i]);
+//		if (heapSize - 1 == i)
+//			printf("]");
+//	}
+//	printf("\n\n");
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,53 };
+//	int size = 8;
+//	int heapSize = 0;
+//
+//	PrintList(list, heapSize, size);
+//
+//	for (int i = 0; i < size; ++i)
+//	{
+//		heapSize += 1;
+//		push_heap(list, list + heapSize);
+//		PrintList(list, heapSize, size);
+//	}
+//}
+
+
+
+
+//#include <stdio.h>
+//#include<stdlib.h>
+//#include <time.h>
+//#include <algorithm>
+//using namespace std;
+//void PrintList(const int list[],int heapSize, int size)
+//{
+//	printf("[");
+//	if (heapSize == 0)
+//		printf("]");
+//	for (int i = 0; i < size; i++)
+//	{
+//		printf("%5d", list[i]);
+//		if (heapSize - 1 == i)
+//			printf("]");
+//	}
+//	printf("\n\n");
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,53 };
+//	int size = 8;
+//
+//	PrintList(list,0, size);
+//	/*size = 0;
+//	push_heap(list, list + ++size);
+//	PrintList(list, size);*/
+//
+//}
+
+
+
+
+
+//#include <stdio.h>
+//#include<stdlib.h>
+//#include <time.h>
+//#include <algorithm>
+//using namespace std;
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n\n");
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,53 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//	size = 0;
+//	push_heap(list, list + ++size);
+//	push_heap(list, list + ++size);
+//	push_heap(list, list + ++size);
+//	push_heap(list, list + ++size);
+//	push_heap(list, list + ++size);
+//	push_heap(list, list + ++size);
+//	push_heap(list, list + ++size);
+//	push_heap(list, list + ++size);
+//	PrintList(list, size);
+//	pop_heap(list, list + size--);
+//	pop_heap(list, list + size--);
+//	pop_heap(list, list + size--);
+//	pop_heap(list, list + size--);
+//	pop_heap(list, list + size--);
+//	pop_heap(list, list + size--);
+//	pop_heap(list, list + size--);
+//	pop_heap(list, list + size--);
+//	size = 8;
+//	PrintList(list, size);
+//
+//}
+
+
+
+
+
+//#include <stdio.h>
+//#include<stdlib.h>
+//#include <time.h>
+//#include <algorithm>
+//using namespace std;
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n\n");
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,53 };
+//	int size = 8;
+//
+//	PrintList(list, size);
+//	make_heap(list, list + size);
+//	PrintList(list, size);
+//	sort_heap(list, list + size);
+//	PrintList(list, size);
+//
+//}
+////2진트리:차수(자식)가 2이하인 노드로만 구성
+////모든 노드가 부모가 자식보다 큰것이 최대heap != 최소heap
+////메모리상에 표현은 배열기반, 노드기반
+
+
+
+//#include <stdio.h>
+//#include<stdlib.h>
+//#include <time.h>
+//void Swap(int& a, int& b)
+//{
+//	int temp = a;
+//	a = b;
+//	b = temp;
+//}
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n\n");
+//}
+//void _QuickSort(int list[], int left, int right)
+//{
+//	if (left <= right)
+//	{
+//		int pivot = left;
+//		int i = left + 1;
+//		int j = right;
+//		while (i <= j)
+//		{
+//			while (list[pivot] > list[i])
+//				++i;
+//			while (list[pivot] < list[j])
+//				--j;
+//			if (i <= j)
+//				Swap(list[i++], list[j--]);
+//		}
+//		Swap(list[pivot], list[j]);
+//		_QuickSort(list, left, j - 1);
+//		_QuickSort(list, j + 1, right);
+//	}
+//}
+//void QuickSort(int list[], int size)
+//{
+//	_QuickSort(list, 0, size - 1);
+//}
+//int main() {
+//	//int list[10] = { 59,45,30,67,83,21,95,53 };
+//	int list[100];
+//	int size = 100;
+//	srand((unsigned)time(NULL));
+//	for (int i = 0; i < size; ++i)
+//		list[i] = rand() % 100;
+//
+//
+//	PrintList(list, size);
+//	QuickSort(list, size);
+//	PrintList(list, size);
+//}
+
+
+
+
+
+//#include <stdio.h>
+//void Swap(int& a, int& b)
+//{
+//	int temp = a;
+//	a = b;
+//	b = temp;
+//}
+//void PrintList(const int list[], int size)
+//{
+//	for (int i = 0; i < size; i++)
+//		printf("%5d", list[i]);
+//	printf("\n\n");
+//}
+//void _QuickSort(int list[], int left, int right)
+//{
+//	if (left <= right)
+//	{
+//		int pivot = left;
+//		int i = left + 1;
+//		int j = right;
+//		while (i <= j)
+//		{
+//			while (list[pivot] > list[i])
+//				++i;
+//			while (list[pivot] < list[j])
+//				--j;
+//			if (i <= j)
+//				Swap(list[i++], list[j--]);
+//		}
+//		Swap(list[pivot], list[j]);
+//		_QuickSort(list, left, j - 1);
+//		_QuickSort(list, j+1, right);
+//	}
+//}
+//void QuickSort(int list[], int size)
+//{
+//	_QuickSort(list, 0, size - 1);
+//}
+//int main() {
+//	int list[10] = { 59,45,30,67,83,21,95,53 };
+//	int size = 8;
+//
+//
+//	PrintList(list, size);
+//	QuickSort(list, size);
+//	PrintList(list, size);
+//}
